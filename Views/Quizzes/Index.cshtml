@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DynamicQuizGenerator.Models.Quiz>
+@{
+    ViewData["Title"] = "Quizzes";
+}
+
+<h2>Quizzes</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Quiz</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var quiz in Model)
+        {
+            <tr>
+                <td>@quiz.Title</td>
+                <td>@quiz.Description</td>
+                <td>@quiz.CreatedDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@quiz.QuizId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@quiz.QuizId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
