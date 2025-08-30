@@ -1,0 +1,26 @@
+﻿@model DynamicQuizGenerator.Models.Question
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<h2>Edit Question</h2>
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="QuestionId" />
+    <input type="hidden" asp-for="QuizId" />
+
+    <div class="form-group">
+        <label asp-for="Text"></label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" asp-route-quizId="@Model.QuizId" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

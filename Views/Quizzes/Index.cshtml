@@ -24,8 +24,9 @@
                 <td>@quiz.Description</td>
                 <td>@quiz.CreatedDate.ToShortDateString()</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@quiz.QuizId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@quiz.QuizId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-danger">Delete</a>
+                    <a asp-controller="Questions" asp-action="Index" asp-route-quizId="@quiz.QuizId" class="btn btn-sm btn-info">Manage Questions</a>
                 </td>
             </tr>
         }

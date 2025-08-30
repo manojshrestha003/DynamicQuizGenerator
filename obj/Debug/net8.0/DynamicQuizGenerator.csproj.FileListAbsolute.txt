@@ -169,3 +169,4 @@ C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\n
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\net8.0\DynamicQuizGenerator.pdb
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\net8.0\DynamicQuizGenerator.genruntimeconfig.cache
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\net8.0\ref\DynamicQuizGenerator.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\net8.0\DynamicQuizGenerator.sourcelink.json

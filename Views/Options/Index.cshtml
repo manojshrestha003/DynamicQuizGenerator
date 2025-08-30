@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DynamicQuizGenerator.Models.Option>
+@{
+    ViewData["Title"] = "Options";
+}
+
+<h2>Options</h2>
+
+<p>
+    <a asp-action="Create" asp-route-questionId="@ViewBag.QuestionId" class="btn btn-primary">Add Option</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Text</th>
+            <th>Is Correct</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var option in Model)
+        {
+            <tr>
+                <td>@option.Text</td>
+                <td>@option.IsCorrect</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@option.OptionId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@option.OptionId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -7,11 +7,11 @@ namespace DynamicQuizGenerator.Models
         public int OptionId { get; set; }
 
         [Required]
-        public string Text { get; set; }
-
+        public string? Text { get; set; }
+        
         public bool IsCorrect { get; set; }
 
         public int QuestionId { get; set; }
-        public Question Question { get; set; }
+        public Question? Question { get; set; }
     }
 }

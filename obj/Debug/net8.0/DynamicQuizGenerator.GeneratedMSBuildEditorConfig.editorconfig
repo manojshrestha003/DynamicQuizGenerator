@@ -36,6 +36,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Options/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3B0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Options/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3B0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Options/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3B0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Options/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3B0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Questions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Questions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Questions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Questions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVlc3Rpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/samsung/Documents/DynamicQuizGenerator/DynamicQuizGenerator/Views/Quizzes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpenplc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -13,7 +13,8 @@ namespace DynamicQuizGenerator.Models
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
 
-        public ICollection<Question>? Questions { get; set; }
+        public ICollection<Question> Questions { get; set; } = new List<Question>();
+
 
     }
 }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DynamicQuizGenerator.Models.Question>
+@{
+    ViewData["Title"] = "Questions";
+    var quizId = ViewBag.QuizId;
+}
+
+<h2>Questions for "@ViewBag.QuizTitle"</h2>
+<p>
+    <a asp-action="Create" asp-route-quizId="@quizId" class="btn btn-primary">Add Question</a>
+    <a asp-controller="Quizzes" asp-action="Index" class="btn btn-secondary">Back to Quizzes</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Options Count</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model)
+        {
+            <tr>
+                <td>@question.Text</td>
+                <td>@question.Options?.Count </td>
+                <td>
+                    <a asp-controller="Options" asp-action="Index" asp-route-questionId="@question.QuestionId">Options</a> |
+                    <a asp-action="Edit" asp-route-id="@question.QuestionId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@question.QuestionId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
