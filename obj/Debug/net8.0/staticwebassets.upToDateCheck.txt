@@ -1,5 +1,8 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\Login.js
+wwwroot\js\profile.js
+wwwroot\js\Register.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map

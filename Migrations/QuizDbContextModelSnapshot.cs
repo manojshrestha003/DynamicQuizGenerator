@@ -145,6 +145,32 @@ namespace DynamicQuizGenerator.Migrations
                     b.ToTable("Quizzes");
                 });
 
+            modelBuilder.Entity("DynamicQuizGenerator.Models.Student", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("StudentId");
+
+                    b.ToTable("Students");
+                });
+
             modelBuilder.Entity("DynamicQuizGenerator.Models.Answer", b =>
                 {
                     b.HasOne("DynamicQuizGenerator.Models.Attempt", "Attempt")

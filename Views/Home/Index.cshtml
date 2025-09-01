@@ -1,8 +1,139 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dynamic Quiz Generator";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
+        min-height: 100vh;
+        
+        color: #f1f1f1;
+    }
+
+    .hero-section {
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+    .card {
+        background: rgba(255, 255, 255, 0.08);
+        border: none;
+        border-radius: 15px;
+        color: #fff;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+    .btn-custom {
+        border-radius: 30px;
+        padding: 12px 28px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+    footer {
+        margin-top: 60px;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        text-align: center;
+        color: #aaa;
+    }
+</style>
+
+<div class="container hero-section">
+    <!-- Hero Section -->
+    <h1> Quizzyfy, Dynamic Quiz Generator</h1>
+    <p>Create, Manage and Attempt Quizzes with Ease</p>
+    <a asp-controller="Quizzes" asp-action="Create" class="btn btn-warning btn-lg btn-custom me-3">Create Quiz</a>
+    <a  class="btn btn-light btn-lg btn-custom">Attempt Quiz</a>
 </div>
+
+<!-- Features Section -->
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-pencil-square display-4 text-warning"></i>
+                <h4 class="mt-3">Create Quizzes</h4>
+                <p>Design engaging quizzes with multiple questions and options.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-check-circle display-4 text-success"></i>
+                <h4 class="mt-3">Take Quizzes</h4>
+                <p>Students can attempt quizzes anytime with instant evaluation.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm p-4">
+                <i class="bi bi-bar-chart display-4 text-info"></i>
+                <h4 class="mt-3">View Results</h4>
+                <p>Analyze performance with detailed results and scores.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container mt-5 mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg"
+                     alt="About Quizzyfy"
+                     class="img-fluid rounded shadow-lg"
+                     style="max-height: 300px;">
+            </div>
+            <div class="col-md-6 text-light">
+                <h2 class="fw-bold mb-3"
+                    style="background: linear-gradient(90deg, #ff6a00, #ee0979);
+                       -webkit-background-clip: text;
+                       -webkit-text-fill-color: transparent;">
+                    About Quizzyfy
+                </h2>
+                <p class="lead" style="color:#ddd;">
+                    Quizzyfy is a <strong>dynamic quiz generator</strong> designed for teachers, students, and organizations.
+                    It allows you to <span class="text-warning">create quizzes effortlessly</span>,
+                    <span class="text-success">attempt them anytime</span>, and
+                    <span class="text-info">analyze results instantly</span>.
+                </p>
+                <p style="color:#bbb;">
+                    Whether you are an educator looking to test knowledge, a student practicing for exams,
+                    or an organization conducting assessments, Quizzyfy provides a
+                    <strong>fast, user-friendly, and powerful platform</strong>.
+                </p>
+                <a asp-controller= "Faq" asp-action="Index"  class="btn btn-warning btn-custom mt-3">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

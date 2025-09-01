@@ -1,0 +1,101 @@
+﻿@model DynamicQuizGenerator.Models.Quiz
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2c2c2c);
+        color: #f1f1f1;
+    }
+
+    .quiz-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 30px 20px;
+        background: rgba(25, 25, 25, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+        .quiz-container h2 {
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+    .question-card {
+        background: rgba(40, 40, 40, 0.9);
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border-left: 4px solid #ff6a00;
+    }
+
+        .question-card p {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+    .option-item {
+        margin-bottom: 8px;
+    }
+
+    input[type="radio"] {
+        accent-color: #ff6a00;
+        margin-right: 10px;
+    }
+
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 25px;
+        background: linear-gradient(90deg, #ff6a00, #ee0979);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+</style>
+
+<div class="quiz-container">
+    <h2>@Model.Title</h2>
+    <form id="quizForm" asp-action="Submit" method="post">
+        <input type="hidden" name="quizId" value="@Model.QuizId" />
+
+        @foreach (var question in Model.Questions)
+        {
+            <div class="question-card">
+                <p>@question.Text</p>
+                @foreach (var option in question.Options)
+                {
+                    <div class="option-item">
+                        <input type="radio" name="answers[@question.QuestionId]" value="@option.OptionId" id="option-@option.OptionId" />
+                        <label for="option-@option.OptionId">@option.Text</label>
+                    </div>
+                }
+            </div>
+        }
+
+        <button type="submit" class="btn-submit">Submit Quiz</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            e.preventDefault(); 
+            alert("You must be logged in to submit the quiz.");
+            window.location.href = "/Account/Login";
+        }
+        
+    });
+</script>

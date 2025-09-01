@@ -3,32 +3,104 @@
     ViewData["Title"] = "Quizzes";
 }
 
-<h2>Quizzes</h2>
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New Quiz</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Created Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var quiz in Model)
-        {
-            <tr>
-                <td>@quiz.Title</td>
-                <td>@quiz.Description</td>
-                <td>@quiz.CreatedDate.ToShortDateString()</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-danger">Delete</a>
-                    <a asp-controller="Questions" asp-action="Index" asp-route-quizId="@quiz.QuizId" class="btn btn-sm btn-info">Manage Questions</a>
-                </td>
-            </tr>
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 100vh;
+        color: #f1f1f1;
+       
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .btn-custom {
+        border-radius: 25px;
+        font-size: 14px;
+        padding: 6px 15px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, #0072ff, #00c6ff);
+        border: none;
+    }
+
+    .btn-warning {
+        background: linear-gradient(90deg, #ff9800, #ffc107);
+        border: none;
+        color: #fff;
+    }
+
+    .btn-danger {
+        background: linear-gradient(90deg, #f44336, #e91e63);
+        border: none;
+        color: #fff;
+    }
+
+    .btn-info {
+        background: linear-gradient(90deg, #2193b0, #6dd5ed);
+        border: none;
+        color: #fff;
+    }
+
+    .table {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .table th {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #00e6e6;
+            text-align: center;
         }
-    </tbody>
-</table>
+
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+            color:aliceblue;
+        }
+
+        .table tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: 0.3s ease;
+        }
+</style>
+
+<div class="container py-5">
+    <h2>Available Quizzes</h2>
+
+    <div class="text-center mb-4">
+        <a asp-action="Create" class="btn btn-primary btn-custom">+ Create New Quiz</a>
+    </div>
+
+    <table class="table table-bordered table-hover shadow-lg">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quiz in Model)
+            {
+                <tr>
+                    <td>@quiz.Title</td>
+                    <td>@quiz.Description</td>
+                    <td>@quiz.CreatedDate.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@quiz.QuizId" class="btn btn-warning btn-sm btn-custom">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@quiz.QuizId" class="btn btn-danger btn-sm btn-custom">Delete</a>
+                        <a asp-controller="Questions" asp-action="Index" asp-route-quizId="@quiz.QuizId" class="btn btn-info btn-sm btn-custom">Manage Questions</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

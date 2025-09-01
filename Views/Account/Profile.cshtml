@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Profile - Quizzyfy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2c2c2c);
+       
+    }
+
+    .profile-card {
+        max-width: 400px;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        border: 1px solid #333;
+        border-radius: 16px;
+        padding: 30px 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+        .profile-card h2 {
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            margin: 4px 0;
+        }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 2px solid #ff6a00;
+    }
+
+    #logoutBtn {
+        transition: all 0.3s ease;
+    }
+
+        #logoutBtn:hover {
+            background-color: #ff6a00;
+            color: #fff;
+            border-color: #ff6a00;
+        }
+
+    .action-link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #ee0979;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="profile-card text-center text-light">
+        <img id="profileImage" src="https://history.ucr.edu/sites/default/files/styles/form_preview/public/Blank%20Profile%20Picture.png?itok=tOY7DAmt" alt="Profile Image" class="profile-img">
+
+        <h2>Your Profile</h2>
+        <p class="text-muted">Student Information</p>
+
+        <div id="profileInfo">
+            <p>Loading...</p>
+        </div>
+
+        <div>
+            <p id="participate" class="action-link">Participate in Quiz</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <button id="logoutBtn" class="btn btn-outline-warning btn-sm rounded-pill px-4">
+                Logout
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/profile.js"></script>
+

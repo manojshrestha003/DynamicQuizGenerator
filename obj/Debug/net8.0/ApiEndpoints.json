@@ -1,1 +1,70 @@
-[]
+[
+  {
+    "ContainingType": "DynamicQuizGenerator.Controllers.QuizApiController",
+    "Method": "GetAllQuizzes",
+    "RelativePath": "api/QuizApi/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DynamicQuizGenerator.Controllers.QuizApiController",
+    "Method": "Submit",
+    "RelativePath": "api/QuizApi/Submit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DynamicQuizGenerator.Models.SubmitQuizModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DynamicQuizGenerator.Controllers.StudentAuthController",
+    "Method": "Login",
+    "RelativePath": "api/StudentAuth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "DynamicQuizGenerator.Models.DTOs.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DynamicQuizGenerator.Controllers.StudentAuthController",
+    "Method": "GetProfile",
+    "RelativePath": "api/StudentAuth/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DynamicQuizGenerator.Controllers.StudentAuthController",
+    "Method": "Register",
+    "RelativePath": "api/StudentAuth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "DynamicQuizGenerator.Models.DTOs.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,108 @@
+﻿@model DynamicQuizGenerator.Models.Attempt
+@{
+    ViewData["Title"] = "Quiz Result";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2c2c2c);
+        
+        color: #f1f1f1;
+    }
+
+    .result-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 30px 20px;
+        background: rgba(25, 25, 25, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .result-container h2 {
+        background: linear-gradient(90deg, #ff6a00, #ee0979);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .score-summary {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+    }
+
+    .score-summary p {
+        margin: 8px 0;
+    }
+
+    .feedback-card {
+        background: rgba(40, 40, 40, 0.9);
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border-left: 5px solid #ff6a00;
+        transition: transform 0.2s ease;
+    }
+
+    .feedback-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+    }
+
+    .feedback-card p {
+        margin: 5px 0;
+    }
+
+    .text-success {
+        color: #28a745;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .text-danger {
+        color: #dc3545;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+</style>
+
+<div class="result-container">
+    <h2>Quiz Result: @Model.Quiz.Title</h2>
+
+    <div class="score-summary">
+        <p><strong>Total Questions:</strong> @ViewBag.TotalQuestions</p>
+        <p><strong>Correct Answers:</strong> @ViewBag.CorrectAnswers</p>
+        <p><strong>Score:</strong> @(Math.Round(((double)ViewBag.CorrectAnswers / ViewBag.TotalQuestions) * 100))%</p>
+    </div>
+
+    <hr style="border-color: #333;" />
+
+    <h3>Detailed Feedback:</h3>
+
+    @foreach (var answer in Model.Answers)
+    {
+        <div class="feedback-card">
+            <p><strong>Q:</strong> @answer.Question.Text</p>
+            <p>
+                <strong>Your Answer:</strong> @answer.SelectedOption.Text
+                @if (answer.SelectedOption.IsCorrect)
+                {
+                    <span class="text-success">✔ Correct</span>
+                }
+                else
+                {
+                    <span class="text-danger">✖ Incorrect</span>
+                }
+            </p>
+            <p>
+                <strong>Correct Answer(s):</strong>
+                @string.Join(", ", answer.Question.Options.Where(o => o.IsCorrect).Select(o => o.Text))
+            </p>
+        </div>
+    }
+</div>
+<script>
+
+</script>

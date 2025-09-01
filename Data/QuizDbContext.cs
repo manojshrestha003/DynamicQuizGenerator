@@ -10,6 +10,8 @@ public class QuizDbContext : DbContext
     public DbSet<Option> Options { get; set; }
     public DbSet<Attempt> Attempts { get; set; }
     public DbSet<Answer> Answers { get; set; }
+    public DbSet<Student> Students { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
