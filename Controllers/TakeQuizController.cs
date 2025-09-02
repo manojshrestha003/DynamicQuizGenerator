@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
+public class QuizSubmissionDto
+{
+    public int QuizId { get; set; }
+    public Dictionary<int, int> Answers { get; set; }
+}
+
 namespace DynamicQuizGenerator.Controllers
 {
     
@@ -36,28 +42,23 @@ namespace DynamicQuizGenerator.Controllers
 
         // POST: Submit quiz
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Submit(int quizId, Dictionary<int, int> answers)
+        public IActionResult Submit([FromBody] QuizSubmissionDto submission)
         {
             var studentId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (!int.TryParse(studentId, out int studentIdInt))
-            {
-                return Unauthorized(); 
-            }
+                return Unauthorized();
 
             var attempt = new Attempt
             {
-                QuizId = quizId,
+                QuizId = submission.QuizId,
                 StudentId = studentIdInt,
                 AttemptDate = DateTime.Now
             };
 
-
             _context.Attempts.Add(attempt);
             _context.SaveChanges();
 
-            foreach (var ans in answers)
+            foreach (var ans in submission.Answers)
             {
                 _context.Answers.Add(new Answer
                 {
@@ -66,11 +67,11 @@ namespace DynamicQuizGenerator.Controllers
                     OptionId = ans.Value
                 });
             }
+
             _context.SaveChanges();
 
             return RedirectToAction("Result", new { attemptId = attempt.AttemptId });
         }
-
         // GET: Show result
         public IActionResult Result(int attemptId)
         {
@@ -94,5 +95,53 @@ namespace DynamicQuizGenerator.Controllers
 
             return View(attempt);
         }
+
+       
+        public IActionResult History()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetHistory()
+        {
+            var studentId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(studentId, out int studentIdInt))
+                return Unauthorized();
+
+            var attempts = _context.Attempts
+                .Where(a => a.StudentId == studentIdInt)
+                .Include(a => a.Quiz)
+                .Include(a => a.Answers)
+                    .ThenInclude(a => a.SelectedOption)
+                .Include(a => a.Answers)
+                    .ThenInclude(a => a.Question)
+                .OrderByDescending(a => a.AttemptDate)
+                .Select(a => new
+                {
+                    a.AttemptId,
+                    a.AttemptDate,
+                    Quiz = new
+                    {
+                        a.Quiz.QuizId,
+                        a.Quiz.Title
+                    },
+                    Answers = a.Answers.Select(ans => new
+                    {
+                        ans.QuestionId,
+                        QuestionText = ans.Question.Text,
+                        SelectedOption = new
+                        {
+                            ans.SelectedOption.OptionId,
+                            ans.SelectedOption.Text,
+                            ans.SelectedOption.IsCorrect
+                        }
+                    }).ToList()
+                })
+                .ToList();
+
+            return Json(attempts);
+        }
+
     }
 }

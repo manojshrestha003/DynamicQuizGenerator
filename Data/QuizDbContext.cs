@@ -12,6 +12,8 @@ public class QuizDbContext : DbContext
     public DbSet<Answer> Answers { get; set; }
     public DbSet<Student> Students { get; set; }
 
+    public DbSet<Admin> Admins { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

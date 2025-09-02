@@ -1,0 +1,74 @@
+﻿
+<style>
+    body {
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2c2c2c);
+        color: #f1f1f1;
+    }
+    .quiz-container h2{
+        margin-top:10px;
+
+    }
+    
+</style>
+
+<div class="quiz-container">
+    <h2>Your Quiz History</h2>
+    <div id="history-container">
+    </div>
+</div>
+
+
+<script>
+    async function loadHistory() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Login required");
+            window.location.href = "/Account/Login";
+            return;
+        }
+
+        const response = await fetch("/TakeQuiz/GetHistory", {
+            headers: { "Authorization": "Bearer " + token }
+        });
+
+        if (!response.ok) {
+            alert("Failed to load history. Status: " + response.status);
+            return;
+        }
+
+        const attempts = await response.json();
+        const container = document.getElementById("history-container");
+
+        container.innerHTML = attempts.map(attempt => {
+            const total = attempt.answers.length;
+            const correct = attempt.answers.filter(a => a.selectedOption.isCorrect).length;
+            const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+            return `
+                <table class="table table-dark table-striped mb-4">
+                    <thead>
+                        <tr>
+                            <th>Quiz Title</th>
+                            <th>Date Taken</th>
+                            <th>Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${attempt.quiz.title}</td>
+                            <td>${new Date(attempt.attemptDate).toLocaleString()}</td>
+                            <td>${score}%</td>
+                            <td>
+                                <a href="/TakeQuiz/Result?attemptId=${attempt.attemptId}" class="btn btn-sm btn-primary">View Details</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }).join('');
+    }
+
+    
+    loadHistory();
+</script>

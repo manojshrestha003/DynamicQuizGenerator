@@ -17,7 +17,9 @@
 
         .quiz-container h2 {
             background: linear-gradient(90deg, #ff6a00, #ee0979);
+            background-clip: text;
             -webkit-background-clip: text;
+            color: transparent;
             -webkit-text-fill-color: transparent;
             text-align: center;
             margin-bottom: 25px;
@@ -30,11 +32,6 @@
         margin-bottom: 20px;
         border-left: 4px solid #ff6a00;
     }
-
-        .question-card p {
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
 
     .option-item {
         margin-bottom: 8px;
@@ -67,6 +64,8 @@
 <div class="quiz-container">
     <h2>@Model.Title</h2>
     <form id="quizForm" asp-action="Submit" method="post">
+        @Html.AntiForgeryToken() <!-- Important for 400 fix -->
+
         <input type="hidden" name="quizId" value="@Model.QuizId" />
 
         @foreach (var question in Model.Questions)
@@ -88,14 +87,41 @@
 </div>
 
 <script>
-    document.getElementById("quizForm").addEventListener("submit", function(e) {
-        const token = localStorage.getItem("token");
+    document.getElementById("quizForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
 
+        const token = localStorage.getItem("token");
         if (!token) {
-            e.preventDefault(); 
-            alert("You must be logged in to submit the quiz.");
+            alert("Login required");
             window.location.href = "/Account/Login";
+            return;
         }
-        
+
+        // Build JSON data
+        const data = { quizId: this.quizId.value, answers: {} };
+
+        // Collect selected answers
+        for (let input of this.querySelectorAll('input[type="radio"]:checked')) {
+            const questionId = input.name.match(/\d+/)[0];
+            data.answers[questionId] = parseInt(input.value);
+        }
+
+        // Send JSON to controller
+        const response = await fetch("/TakeQuiz/Submit", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        // Redirect to result page
+        if (response.redirected) {
+            window.location.href = response.url;
+        } else {
+            alert("Error: " + response.status);
+        }
     });
 </script>
+

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DynamicQuizGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f306a36b79ffee6cd475656a21285bd94e4665c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87211acff1b5fc1f3c40df62e57c3f0059490e14")]
 [assembly: System.Reflection.AssemblyProductAttribute("DynamicQuizGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DynamicQuizGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -37,6 +37,10 @@
         window.location.href = "/TakeQuiz";
     })
 
+    document.getElementById('history').addEventListener("click", function () {
+        window.location.href = "/TakeQuiz/History";
+    })
+
     // Logout button
     document.getElementById("logoutBtn").addEventListener("click", function () {
         localStorage.removeItem("token");

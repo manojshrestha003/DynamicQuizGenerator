@@ -1,5 +1,6 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\AdminRegister.js
 wwwroot\js\Login.js
 wwwroot\js\profile.js
 wwwroot\js\Register.js
@@ -61,3 +62,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\js\AdminLogin.js
