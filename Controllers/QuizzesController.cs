@@ -13,17 +13,17 @@ namespace DynamicQuizGenerator.Controllers
             _context = context;
         }
 
-        // GET: Quizzes
+        
         public async Task<IActionResult> Index()
         {
             var quizzes = await _context.Quizzes.ToListAsync();
             return View(quizzes);
         }
 
-        // GET: Quizzes/Create
+    
         public IActionResult Create() => View();
 
-        // POST: Quizzes/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Quiz quiz)

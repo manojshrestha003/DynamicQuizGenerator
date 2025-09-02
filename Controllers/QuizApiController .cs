@@ -25,7 +25,7 @@ namespace DynamicQuizGenerator.Controllers
     [HttpPost("Submit")]
     public IActionResult Submit([FromBody] SubmitQuizModel model)
     {
-        // TODO: Add logic to save quiz attempt, calculate score
+        
         return Ok(new { message = "Quiz submitted successfully!" });
     }
     }
