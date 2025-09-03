@@ -4,28 +4,99 @@
     ViewData["Title"] = "Edit Option";
 }
 
-<h2>Edit Option</h2>
+<style>
+    body{
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    .edit-option-page {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 80vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+    }
 
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
+    .edit-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 400px;
+        color: #f1f1f1;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.6s ease-in-out;
+    }
 
-    <input type="hidden" asp-for="QuestionId" />
+        .edit-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
 
-    <div class="form-group">
-        <label asp-for="Text"></label>
-        <input asp-for="Text" class="form-control" />
-        <span asp-validation-for="Text" class="text-danger"></span>
+    .form-group label,
+    .form-check-label {
+        font-weight: 600;
+    }
+
+    .form-control, .form-check-input {
+        background-color: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #fff;
+    }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            outline: none;
+            box-shadow: 0 0 8px #00c6ff;
+        }
+
+    .btn {
+        margin-top: 15px;
+        width: 100px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+    }
+
+  
+</style>
+
+<div class="edit-option-page">
+    <div class="edit-card">
+        <h2>Edit Option</h2>
+
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="QuestionId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Text"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsCorrect" class="form-check-input" />
+                <label asp-for="IsCorrect" class="form-check-label"></label>
+                <span asp-validation-for="IsCorrect" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="Index" asp-route-questionId="@Model.QuestionId" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
-
-    <div class="form-check">
-        <input asp-for="IsCorrect" class="form-check-input" />
-        <label asp-for="IsCorrect" class="form-check-label"></label>
-        <span asp-validation-for="IsCorrect" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-success">Save</button>
-    <a asp-action="Index" asp-route-questionId="@Model.QuestionId" class="btn btn-secondary">Cancel</a>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

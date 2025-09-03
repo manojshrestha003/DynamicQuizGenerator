@@ -4,18 +4,97 @@
     ViewData["Title"] = "Delete Option";
 }
 
-<h2>Delete Option</h2>
+<style>
+    body{
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+    .delete-option-page {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 80vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+    }
 
-<h3>Are you sure you want to delete this option?</h3>
+    .delete-container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 12px;
+        width: 500px;
+        text-align: center;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+        color: #f1f1f1;
+    }
 
-<div>
-    <strong>Text:</strong> @Model.Text<br />
-    <strong>Is Correct:</strong> @Model.IsCorrect
+        .delete-container h2 {
+            color: #f9f9f9;
+            margin-bottom: 15px;
+        }
+
+        .delete-container h3 {
+            color: #ffdddd;
+            margin-bottom: 20px;
+        }
+
+    .details {
+        margin: 20px 0;
+        text-align: left;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+        .details strong {
+            color: #ffd369;
+        }
+
+    .btn-danger {
+        background: #e63946;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-danger:hover {
+            background: #b71c1c;
+        }
+
+    .btn-secondary {
+        background: #6c757d;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        margin-left: 10px;
+        transition: 0.3s;
+    }
+
+        .btn-secondary:hover {
+            background: #495057;
+        }
+</style>
+
+<div class="delete-option-page">
+    <div class="delete-container">
+        <h2>Delete Option</h2>
+        <h3>Are you sure you want to delete this option?</h3>
+
+        <div class="details">
+            <p><strong>Text:</strong> @Model.Text</p>
+            <p><strong>Is Correct:</strong> @Model.IsCorrect</p>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="OptionId" />
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" asp-route-questionId="@Model.QuestionId" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
 </div>
-
-<form asp-action="Delete" method="post">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="OptionId" />
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a asp-action="Index" asp-route-questionId="@Model.QuestionId" class="btn btn-secondary">Cancel</a>
-</form>

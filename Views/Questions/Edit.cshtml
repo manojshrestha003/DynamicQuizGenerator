@@ -3,23 +3,76 @@
     ViewData["Title"] = "Edit Question";
 }
 
-<h2>Edit Question</h2>
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="QuestionId" />
-    <input type="hidden" asp-for="QuizId" />
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      
+    }
 
-    <div class="form-group">
-        <label asp-for="Text"></label>
-        <input asp-for="Text" class="form-control" />
-        <span asp-validation-for="Text" class="text-danger"></span>
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+    }
+
+    .card {
+        background: #fff;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #333;
+        }
+
+    .form-group label {
+        font-weight: 500;
+    }
+
+    .btn {
+        border-radius: 6px;
+        padding: 8px 18px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        margin-left: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <h2>Edit Question</h2>
+
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="QuestionId" />
+            <input type="hidden" asp-for="QuizId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Text"></label>
+                <input asp-for="Text" class="form-control" placeholder="Update your question..." />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="Index" asp-route-quizId="@Model.QuizId" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
-
-    <button type="submit" class="btn btn-success">Save</button>
-    <a asp-action="Index" asp-route-quizId="@Model.QuizId" class="btn btn-secondary">Cancel</a>
-</form>
-
-
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

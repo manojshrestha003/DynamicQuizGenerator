@@ -3,31 +3,150 @@
     ViewData["Title"] = "Options";
 }
 
-<h2>Options</h2>
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 100vh;
+       
+        color: #f1f1f1;
+    }
 
-<p>
-    <a asp-action="Create" asp-route-questionId="@ViewBag.QuestionId" class="btn btn-primary">Add Option</a>
-</p>
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+    }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Text</th>
-            <th>Is Correct</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var option in Model)
-        {
-            <tr>
-                <td>@option.Text</td>
-                <td>@option.IsCorrect</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@option.OptionId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@option.OptionId">Delete</a>
-                </td>
-            </tr>
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            color: #203a43;
         }
-    </tbody>
-</table>
+
+    .btn {
+        border-radius: 6px;
+        padding: 6px 14px;
+        font-size: 0.95rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+
+    table {
+        margin-top: 20px;
+    }
+
+    .table th {
+        background-color: #203a43;
+        color: #fff;
+        text-align: center;
+    }
+
+    .table td {
+        vertical-align: middle;
+        text-align: center;
+        color: #333;
+        background-color: #fdfdfd;
+    }
+
+    .action-links a {
+        margin: 0 5px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .action-links a.edit {
+            color: #28a745;
+        }
+
+            .action-links a.edit:hover {
+                text-decoration: underline;
+            }
+
+        .action-links a.delete {
+            color: #dc3545;
+        }
+
+            .action-links a.delete:hover {
+                text-decoration: underline;
+            }
+
+    .badge-correct {
+        background-color: #28a745;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+
+    .badge-wrong {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <h2>Options</h2>
+
+        <p class="text-center">
+            <a asp-action="Create" asp-route-questionId="@ViewBag.QuestionId" class="btn btn-primary"> Add Option</a>
+        </p>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>Is Correct</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">No options added yet.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var option in Model)
+                    {
+                        <tr>
+                            <td>@option.Text</td>
+                            <td>
+                                @if (option.IsCorrect)
+                                {
+                                    <span class="badge-correct"> Correct</span>
+                                }
+                                else
+                                {
+                                    <span class="badge-wrong"> Wrong</span>
+                                }
+                            </td>
+                            <td class="action-links">
+                                <a asp-action="Edit" asp-route-id="@option.OptionId" class="edit">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@option.OptionId" class="delete">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

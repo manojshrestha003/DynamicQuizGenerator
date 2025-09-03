@@ -3,27 +3,104 @@
     ViewData["Title"] = "Edit Quiz";
 }
 
-<h2>Edit Quiz</h2>
+<style>
+    body{
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
+    }
+    
+    .edit-quiz-page {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 80vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+    }
+
+    .edit-quiz-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 450px;
+        color: #f1f1f1;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+        .edit-quiz-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #ddd;
+    }
+
+    .form-control, textarea.form-control {
+        background-color: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+        .form-control:focus, textarea.form-control:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 8px #00c6ff;
+            outline: none;
+        }
+
+    .btn {
+        margin-top: 15px;
+        width: 100px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        margin-left: 10px;
+    }
 
     
-    <input type="hidden" asp-for="QuizId" />
+</style>
 
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+<div class="edit-quiz-page">
+    <div class="edit-quiz-card">
+        <h2>Edit Quiz</h2>
+
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="QuizId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-success">Edit</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
