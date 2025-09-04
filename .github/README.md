@@ -55,7 +55,7 @@ Run migrations (if using EF Core) or import the .sql file
 Run the application
 
 
-#Author
+# Author
 
 Manoj Shrestha
 📧 manoj.shrestha2081@gmail.com

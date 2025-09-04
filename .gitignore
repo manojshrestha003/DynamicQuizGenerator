@@ -1,0 +1,54 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.exe
+*.dll
+*.log
+*.sql
+*.pdb
+*.cache
+*.dbmdl
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Logs
+*.log
+logs/
+
+# Publish
+publish/
+*.publish.xml
+*.pubxml
+*.pubxml.user
+PublishProfiles/
+
+# Sensitive files
+appsettings.json
+appsettings.Development.json
+
+# Others
+node_modules/
+wwwroot/lib/
