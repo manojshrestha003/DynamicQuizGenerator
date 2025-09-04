@@ -37,9 +37,9 @@ Quizify/
 
 Clone the repository
 
-git clone https://github.com/your-username/quizify.git
+git clone https://github.com/manojshrestha003/DynamicQuizGenerator
 
-cd quizify
+cd  DynamicQuizGenerator
 
 
 Open in Visual Studio
