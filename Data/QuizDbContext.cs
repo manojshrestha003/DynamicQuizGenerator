@@ -11,6 +11,9 @@ public class QuizDbContext : DbContext
     public DbSet<Attempt> Attempts { get; set; }
     public DbSet<Answer> Answers { get; set; }
     public DbSet<Student> Students { get; set; }
+    
+    public DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
+
 
     public DbSet<Admin> Admins { get; set; }
 

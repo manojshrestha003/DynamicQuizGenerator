@@ -1,0 +1,23 @@
+﻿@model string
+@{
+    ViewBag.Title = "Reset Password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reset Password</h2>
+
+<form method="post" asp-action="ResetPassword">
+    <input type="hidden" name="token" value="@Model" />
+
+    <div class="form-group">
+        <label>New Password</label>
+        <input type="password" name="newPassword" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Reset Password</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p class="mt-3 text-danger">@ViewBag.Message</p>
+}

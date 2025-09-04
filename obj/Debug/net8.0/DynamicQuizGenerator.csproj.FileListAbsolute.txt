@@ -172,3 +172,8 @@ C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\n
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\obj\Debug\net8.0\DynamicQuizGenerator.sourcelink.json
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\MailKit.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\MimeKit.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

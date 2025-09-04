@@ -124,6 +124,31 @@ namespace DynamicQuizGenerator.Migrations
                     b.ToTable("Options");
                 });
 
+            modelBuilder.Entity("DynamicQuizGenerator.Models.PasswordResetToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("PasswordResetTokens");
+                });
+
             modelBuilder.Entity("DynamicQuizGenerator.Models.Question", b =>
                 {
                     b.Property<int>("QuestionId")
@@ -244,6 +269,17 @@ namespace DynamicQuizGenerator.Migrations
                         .IsRequired();
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("DynamicQuizGenerator.Models.PasswordResetToken", b =>
+                {
+                    b.HasOne("DynamicQuizGenerator.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("DynamicQuizGenerator.Models.Question", b =>
