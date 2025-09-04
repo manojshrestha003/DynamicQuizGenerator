@@ -32,15 +32,18 @@ Quizify/
 │── Program.cs          # Application entry point
 │── Startup.cs          # Middleware & services setup
 
-
-#Setup Instructions
+```
+# Setup Instructions
 
 Clone the repository
 
+```bash
 git clone https://github.com/manojshrestha003/DynamicQuizGenerator
 
 cd  DynamicQuizGenerator
+```
 
+```bash
 
 Open in Visual Studio
 
@@ -54,8 +57,10 @@ Run migrations (if using EF Core) or import the .sql file
 
 Run the application
 
+```
 
-# Author
+
+#  Author
 
 Manoj Shrestha
 📧 manoj.shrestha2081@gmail.com
