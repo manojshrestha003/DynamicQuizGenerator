@@ -177,3 +177,4 @@ C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\n
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\MimeKit.dll
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\samsung\Documents\DynamicQuizGenerator\DynamicQuizGenerator\bin\Debug\net8.0\appsettings.example.json
